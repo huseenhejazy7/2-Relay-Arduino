@@ -1,0 +1,94 @@
+String readString = "";
+
+#define led1 8 //
+
+#define led2 9
+
+#define led3 10
+
+#define led4 11
+
+void setup() {
+
+  pinMode(led1, OUTPUT);
+
+   pinMode(led2, OUTPUT);
+
+    pinMode(led3, OUTPUT);
+
+     pinMode(led4, OUTPUT);
+
+  digitalWrite(led1, LOW);
+
+   digitalWrite(led2, LOW);
+
+    digitalWrite(led3, LOW);
+
+     digitalWrite(led4, LOW);
+
+  Serial.begin(9600);
+
+}
+
+
+void loop() {
+
+  while (Serial.available()) {
+
+    char c = (char)Serial.read();
+
+    readString += c;
+
+  }
+
+
+  if (readString.length() > 0) {
+
+
+    if (readString =="اغلق المصباح") {
+
+      digitalWrite(led1, HIGH);
+
+      Serial.print("hlgh");
+
+    }
+
+    else if (readString == "شغل المصباح") {
+
+      digitalWrite(led1, LOW);
+
+      Serial.print("low");
+
+    }
+
+     if (readString == "اغلق المروحه") {
+
+       digitalWrite(led2, HIGH);
+
+      Serial.print("hlgh");
+
+    }
+
+    else if (readString == "شغل المروحه") {
+
+       digitalWrite(led2, LOW);
+
+      Serial.print("Hi, how are you?");
+
+    }
+
+    else {
+
+      Serial.print("Seni anlayamadım.");
+
+    }
+
+
+    readString = "";
+
+  }
+
+
+  delay(100);
+
+}
